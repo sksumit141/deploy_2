@@ -17,6 +17,7 @@ app.use(express.json());
 app.post('/screenshot', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
+      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-136.0.7103.94/chrome-linux64/chrome',
       headless: 'new',
       args: [
         '--no-sandbox',
@@ -29,23 +30,13 @@ app.post('/screenshot', async (req, res) => {
     });
 
     const page = await browser.newPage();
-    
-    // Set a reasonable timeout
+
     await page.setDefaultNavigationTimeout(30000);
-    
-    // Navigate to the frontend URL
-    await page.goto('https://deploy-2-pi.vercel.app', { 
-      waitUntil: 'networkidle0' 
-    });
-
-    // Set viewport and wait for content
+    await page.goto('https://deploy-2-pi.vercel.app', { waitUntil: 'networkidle0' });
     await page.setViewport({ width: 1200, height: 800 });
-    await page.waitForTimeout(2000); // Wait for any dynamic content
+    await page.waitForTimeout(2000);
 
-    const screenshot = await page.screenshot({ 
-      type: 'png',
-      fullPage: true
-    });
+    const screenshot = await page.screenshot({ type: 'png', fullPage: true });
 
     await browser.close();
 
