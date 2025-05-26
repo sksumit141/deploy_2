@@ -1,6 +1,6 @@
 document.getElementById('scrnBTN').addEventListener('click', async () => {
     try {
-        const response = await fetch('http://localhost:3000/screenshot', {
+        const response = await fetch('https://deploy-2-vy5x.onrender.com/screenshot', {
             method: 'POST',
             credentials: 'include',
             headers: {

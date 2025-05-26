@@ -8,13 +8,13 @@ const PORT = 3000;
 
 // CORS config
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000","https://deploy-2-pi.vercel.app/"],
   methods: ['GET', 'POST'],
   credentials: true
 }));
 
 // Serve static frontend
-app.use(express.static(path.join(__dirname, '../frontend')));
+//app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.post('/screenshot', async (req, res) => {
   const browser = await puppeteer.launch({
