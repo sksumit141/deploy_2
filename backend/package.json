@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "postinstall": "npx puppeteer browsers install chrome",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "node node_modules/puppeteer/install.js"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "puppeteer": "^24.9.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

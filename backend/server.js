@@ -21,9 +21,11 @@ app.post('/screenshot', async (req, res) => {
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
+        '--disable-gpu',
         '--disable-dev-shm-usage',
         '--single-process'
-      ]
+      ],
+      ignoreDefaultArgs: ['--disable-extensions']
     });
 
     const page = await browser.newPage();
