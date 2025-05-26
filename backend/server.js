@@ -8,7 +8,7 @@ const PORT = 3000;
 
 // CORS config
 app.use(cors({
-  origin: ["http://localhost:3000","https://deploy-2-pi.vercel.app/"],
+  origin: ["http://localhost:3000","https://deploy-2-pi.vercel.app/screenshot"],
   methods: ['GET', 'POST'],
   credentials: true
 }));
