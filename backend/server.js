@@ -17,16 +17,14 @@ app.use(express.json());
 app.post('/screenshot', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
-      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-136.0.7103.94/chrome-linux64/chrome',
       headless: 'new',
+      executablePath: '/usr/bin/google-chrome',
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
-        '--disable-gpu',
         '--disable-dev-shm-usage',
         '--single-process'
-      ],
-      ignoreDefaultArgs: ['--disable-extensions']
+      ]
     });
 
     const page = await browser.newPage();
